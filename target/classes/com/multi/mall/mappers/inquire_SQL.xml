@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="inquire">
+
+<select id="inquirelist" resultType="inquiredto" parameterType="String">
+	select * from inquire where memberid=#{memberid}
+</select>
+
+<select id="inquire" resultType="inquiredto" parameterType="String">	
+	select * from inquire where memberid=#{memberid}
+</select>
+
+<insert id="insertinquire" parameterType="inquiredto">
+	insert into inquire values(#{code}, #{title}, #{category}, #{content}, #{memberid}, now())
+</insert>
+
+<update id="updateinquire" parameterType="inquiredto">
+	update inquire 
+	set content=#{content}
+	where id=#{code}
+</update>
+
+<delete id="deleteinquire" parameterType="int">
+	delete from inquire where code=#{code}
+</delete>
+
+</mapper>

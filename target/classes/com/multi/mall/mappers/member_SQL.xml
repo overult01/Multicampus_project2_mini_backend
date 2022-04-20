@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+<insert id="insertmember" parameterType="hashMap">
+ insert into multimalldb.member (id,password,email,birth,address,phone,regdate) values (#{id} ,#{password},#{email},#{birth},#{address},#{phone},now())
+</insert>
+
+<select id="selectmember" resultType="memberdto" parameterType="String">
+	select * from multimalldb.member where id= #{id}
+</select>
+
+</mapper>
+
+<!-- <insert id="insert" parameterType="hashMap">
+	<![CDATA[]]> : 원시 문자열. <>등이 있어도 태그로 인식하지 않는다.
+	<![CDATA[insert into text_table (title,writer,contents) values (#{title}, #{writer}, #{contents})]]>
+	insert into text_table (title,writer,contents) values (#{title}, #{writer}, #{contents})
+	</insert> -->

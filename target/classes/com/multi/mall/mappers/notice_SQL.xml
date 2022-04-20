@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+
+<select id="noticelist" resultType="noticedto">
+	select * from notice
+</select>
+
+	<insert id="insertnotice" parameterType="noticedto">
+<!-- 	<![CDATA[]]> : 원시 문자열. <>등이 있어도 태그로 인식하지 않는다. -->
+<!-- 	<![CDATA[insert into text_table (title,writer,contents) values (#{title}, #{writer}, #{contents})]]> -->
+	insert into notice (category, title, content, date) values (#{category}, #{title}, #{content}, now());
+
+	</insert>
+	
+
+
+</mapper>

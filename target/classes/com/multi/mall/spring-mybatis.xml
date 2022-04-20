@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+<!-- 1. mybatis datasource -> sping datasource 설정 -->
+<!--     DataSource(연결, 여러개 생성 공유) -->
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+         <property name="url" value="jdbc:mysql://127.0.0.1:3306/multimalldb"/>
+         <property name="username" value="emp"/>
+         <property name="password" value="emp"/>      
+</bean>
+
+<!-- 2. sql 매핑 파일명 설정, mybatis 설정 파일명 설정 -->
+<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+   <property name="dataSource" ref="dataSource" />
+   <property name="configLocation" value="classpath:com/multi/mall/mybatis-config.xml" />
+   <property name="mapperLocations" value="classpath:com/multi/mall/mappers/*_SQL.xml" />
+
+</bean>
+
+<!-- 3. SqlSession 객체 생성 설정 -->
+<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+   <constructor-arg ref="sqlSessionFactory" />
+</bean>
+
+<!-- 4. annotation scan 객체 설정 -->
+   <context:component-scan base-package="member"/>
+   <context:component-scan base-package="order"/>
+   <context:component-scan base-package="product"/>
+   <context:component-scan base-package="search"/>
+   <context:component-scan base-package="reply"/>
+   <context:component-scan base-package="inquire"/>
+   <context:component-scan base-package="notice"/>
+   <context:component-scan base-package="com.multi.mall" />
+</beans>

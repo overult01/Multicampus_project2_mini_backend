@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reply">
+
+<select id="selectinquire" resultType="inquiredto">
+	select * from inquire
+</select>
+
+
+<select id="selectreply" resultType="replydto">
+	select * from reply
+</select>
+
+<!-- <select id="selectreplyjoin" resultType="replydto">
+	select name, price from reply inner join inquire on reply.inquirecode=inquire.code
+</select> -->
+
+<insert id="insertreply" parameterType="replydto">
+	insert into reply (content, inquirecode, date) values (#{content}, #{inquirecode}, now());
+</insert>
+	
+<!-- 	<update id="updateproduct" parameterType="replydto">
+	UPDATE product SET  name=#{name}, price=#{price}, count=#{count}, regdate=now(), category=#{category}, color=#{color} WHERE (code = #{code});
+	</update> -->
+	
+	
+</mapper>
+

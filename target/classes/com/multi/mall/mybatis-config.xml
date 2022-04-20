@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  <!-- mybatis db 연결정보 세팅 파일 -->
+<configuration>
+
+<!--  
+<settings>
+    <setting name="mapUnderscoreToCamelCase" value="true" />
+  </settings>
+-->
+
+<!-- 1. sql 실행 결과 xxxDTO 매핑 -->
+<typeAliases>
+<!-- 	<typeAlias type="inquire.InquireDTO" alias="inquiredto"/> -->
+
+	<typeAlias type="inquire.InquireDTO" alias="inquiredto"/>
+	<typeAlias type="notice.NoticeDTO" alias="noticedto"/>
+	<typeAlias type="order.OrderDTO" alias="orderdto"/>
+	<typeAlias type="member.MemberDTO" alias="memberdto"/>
+	<typeAlias type="product.ProductDTO" alias="productdto"/>
+	<typeAlias type="reply.ReplyDTO" alias="replydto"/>
+	
+	
+	
+	
+	
+	
+</typeAliases>
+
+</configuration>

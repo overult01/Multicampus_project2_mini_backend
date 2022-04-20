@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="order">
+
+<!-- <select id="selectCountInCart" resultType="String" parameterType="cartVO"> -->
+<!-- 	<![CDATA[ -->
+<!-- 	select decode(count(*),0,'false','true') from t_shopping_cart -->
+<!-- 	where goods_id=#{goods_id} -->
+<!-- 	and member_id=#{member_id} -->
+<!-- 	]]> -->
+<!-- </select> -->
+
+<!-- <insert id="insertGoodsInCart" parameterType="cartVO"> -->
+<!-- 	<![CDATA[ -->
+<!-- 	select decode(count(*),0,'false','true') from t_shopping_cart -->
+<!-- 	where goods_id=#{goods_id} -->
+<!-- 	and member_id=#{member_id} -->
+<!-- 	]]> -->
+<!-- </insert> -->
+
+
+
+<select id="selectorder" resultType="orderdto">
+	select * from multimalldb.order
+</select>
+
+<select id="selectorder2" resultType="orderdto">
+	select name, price from product inner join `order` on product.code=order.productcode
+</select>
+
+
+
+
+<!-- <select id="order" resultType="orderdto" parameterType="String">	 -->
+<!-- 	select * from inquire where code=#{code} -->
+<!-- </select> -->
+
+
+
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+
+<select id="selectproduct" resultType="productdto">
+	select code, name, price, count, regdate, img, category, color from product
+</select>
+
+	<insert id="insertproduct" parameterType="productdto">
+<!-- 	<![CDATA[]]> : 원시 문자열. <>등이 있어도 태그로 인식하지 않는다. -->
+<!-- 	<![CDATA[insert into text_table (title,writer,contents) values (#{title}, #{writer}, #{contents})]]> -->
+	insert into product (code, name, price, count, regdate, img, category, color) values (#{code}, #{name}, #{price}, #{count}, now(), null, #{category},  #{color});
+	</insert>
+	
+<!-- 	<update id="updateproduct" parameterType="productdto">
+	UPDATE product SET img=#{img} WHERE (code = #{code});
+	</update> -->
+	
+
+	<delete  id="deleteproduct" parameterType="int">
+	DELETE FROM product WHERE (code = #{code})
+	</delete>
+<!-- <select id="selectproductone" resultType="productdto">
+	select code, name, price, count, regdate, img, category, color from product
+</select>
+ -->	
+	
+	
+</mapper>
+
